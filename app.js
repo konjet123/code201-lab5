@@ -9,7 +9,8 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sum(a, b) { //eslint-disable-line
-    return ([a+b,'The sum of 4 and 7 is 11.']);
+    var sumTotal = a+b;
+    return ([sumTotal,'The sum of ' + a + ' and ' + b + ' is '+ sumTotal + '.']);
 }
 
 // Here is the test for sum(); uncomment it to run it
@@ -27,7 +28,8 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiply(a, b) { //eslint-disable-line
-    return ([a*b,'The product of 5 and 9 is 45.']);
+    var sumAmount = a*b;
+    return ([sumAmount,'The product of ' + a +' and ' + b +' is '+ sumAmount +'.']);
 }
 
 // Here is the test for multiply(); uncomment it to run it
@@ -48,7 +50,10 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) { //eslint-disable-line
-    return ([a+b+c,a*b*c,'4 and 7 and 5 sum to 16.','The product of 4 and 7 and 5 is 140.']);
+    var sumTotal=a+b+c;
+    var sumAmount=a*b*c;
+    return ([sumTotal,sumAmount, a + ' and '+ b +' and '+ c +' sum to '+ sumTotal +'.',
+    'The product of '+a+' and '+b+' and '+c+' is '+sumAmount+'.']);
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
@@ -71,11 +76,17 @@ var testArray = [2, 3, 4]; //eslint-disable-line
 
 function sumArray(sumArr) { //eslint-disable-line
     var sumNumber=0;
+    var dynamicText='';
     for(var counter=0;counter<sumArr.length;counter++) {
-        sumNumber=(sum(sumArr[counter],sumNumber)[0]);
+        sumNumber = (sum(sumArr[counter], sumNumber)[0]);
+        
+        if(counter<sumArr.length-1)
+            dynamicText=dynamicText + sumArr[counter] + ',';
+        else
+            dynamicText=dynamicText + sumArr[counter];
     }
     console.log(sumNumber);
-    return ([sumNumber,'2,3,4 was passed in as an array of numbers, and 9 is their sum.']);
+    return ([sumNumber,dynamicText+' was passed in as an array of numbers, and '+sumNumber+' is their sum.']);
 }
 
 // Here is the test for sumArray(); uncomment it to run it
@@ -97,11 +108,16 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 function multiplyArray(multArr) { //eslint-disable-line
     var sumMultipleResults=1;
+    var dynamicText='';
     for(var counter=0;counter<multArr.length;counter++) {
         sumMultipleResults=(multiply(multArr[counter],sumMultipleResults)[0]);
+        if(counter<multArr.length-1)
+            dynamicText=dynamicText + multArr[counter] + ',';
+        else
+            dynamicText=dynamicText + multArr[counter];
     }
     console.log(sumMultipleResults);
-    return ([sumMultipleResults,'The numbers 2,3,4 have a product of 24.']);
+    return ([sumMultipleResults,'The numbers '+ dynamicText +' have a product of '+ sumMultipleResults +'.']);
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
@@ -132,11 +148,17 @@ var testDynamicArray = [1,2,3,4,5]; //eslint-disable-line
 
 function multiplyAnyArray(dynamicArray) { //eslint-disable-line
     var sumMultipleResults=1;
+    var dynamicText='';
     for(var counter=0;counter<dynamicArray.length;counter++) {
         sumMultipleResults=(multiply(dynamicArray[counter],sumMultipleResults)[0]);
+
+        if(counter<dynamicArray.length-1)
+            dynamicText=dynamicText + dynamicArray[counter] + ',';
+        else
+            dynamicText=dynamicText + dynamicArray[counter];
     }
     console.log(sumMultipleResults);
-    return ([sumMultipleResults,'The numbers 1,2,3,4,5 have a product of 120.']);
+    return ([sumMultipleResults,'The numbers '+dynamicText+' have a product of '+sumMultipleResults+'.']);
 
 }
 
